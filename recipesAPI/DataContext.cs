@@ -1,6 +1,6 @@
 global using Microsoft.EntityFrameworkCore;
 
-namespace RecipesAPI
+namespace recipesAPI.Data
 {
     public class DataContext : DbContext
     {

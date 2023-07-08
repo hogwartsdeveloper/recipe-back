@@ -1,6 +1,4 @@
-using RecipesAPI;
-
-namespace recipesAPI.Data
+namespace recipesAPI.Services.RecipeService
 {
     public interface IRecipeService
     {

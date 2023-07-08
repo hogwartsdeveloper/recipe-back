@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using RecipesAPI;
-using recipesAPI.Data;
+
+using recipesAPI.Services.RecipeService;
 
 namespace recipesAPI.Controllers
 {
