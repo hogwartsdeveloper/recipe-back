@@ -36,29 +36,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapPut("/recipe", async (DataContext context, List<Recipe> recipes) =>
-{
-    foreach (var item in recipes)
-    {
-        var find = await context.Recipes.FindAsync(item.Id);
-        if (find is null)
-        {
-            await context.Recipes.AddAsync(item);
-        }
-        else
-        {
-            find.Description = item.Description;
-            find.Name = item.Name;
-            find.imagePath = item.imagePath;
-            find.Ingredients = item.Ingredients;
-        }
-
-        await context.SaveChangesAsync();
-    }
-
-    return Results.Ok(await context.Recipes.ToListAsync());
-});
-
-app.MapGet("/recipe", async (DataContext context) => Results.Ok(await context.Recipes.ToListAsync()));
-
 app.Run();
