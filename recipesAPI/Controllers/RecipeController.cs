@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RecipesAPI;
+using recipesAPI.Data;
 
 namespace recipesAPI.Controllers
 {
@@ -7,41 +8,23 @@ namespace recipesAPI.Controllers
     [Route("api/[controller]")]
     public class RecipeController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IRecipeService _recipeService;
 
-        public RecipeController(DataContext context)
+        public RecipeController(IRecipeService recipeService)
         {
-            this._context = context;
+            this._recipeService = recipeService;
         }
         
         [HttpPut]
         public async Task<ActionResult<List<Recipe>>> UpdateAndAdd(List<Recipe> requests)
         {
-            foreach (var item in requests)
-            {
-                var find = await this._context.Recipes.FindAsync(item.Id);
-                if (find is null)
-                {
-                    await this._context.Recipes.AddAsync(item);
-                }
-                else
-                {
-                    find.Description = item.Description;
-                    find.Name = item.Name;
-                    find.imagePath = item.imagePath;
-                    find.Ingredients = item.Ingredients;
-                }
-
-                await this._context.SaveChangesAsync();
-            }
-
-            return Ok(await this._context.Recipes.ToListAsync());
+            return Ok(await this._recipeService.UpdateAndAdd(requests));
         }
         
         [HttpGet]
         public async Task<ActionResult<List<Recipe>>> GetAll()
         {
-            return Ok(await this._context.Recipes.ToListAsync());
+            return Ok(await this._recipeService.GetAll());
         }
 
     }
