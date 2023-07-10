@@ -8,10 +8,12 @@ namespace recipesAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly DataContext _context;
 
-        public AuthController(IUserService userService)
+        public AuthController(IUserService userService, DataContext context)
         {
             this._userService = userService;
+            this._context = context;
         }
         
         [HttpPost("register")]
@@ -43,6 +45,25 @@ namespace recipesAPI.Controllers
                 refreshToken.Token, new CookieOptions{HttpOnly = true, Expires = refreshToken.Expired});
 
             return Ok(result);
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult<string>> UpdateToken(UserResponseDto required)
+        {
+            var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == required.Email);
+            if (fUser is null)
+            {
+                return BadRequest("User not found.");
+            }
+
+            var refreshToken = Request.Cookies["refreshToken"];
+            if (fUser.RefreshToken != refreshToken)
+            {
+                return Unauthorized("Wrong token");
+            } else if (fUser.TokenExpired < DateTime.Now)
+            {
+                return Unauthorized("Token expired");
+            }
         }
 
     }
