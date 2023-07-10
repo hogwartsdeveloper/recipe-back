@@ -19,6 +19,7 @@ namespace recipesAPI.Data
             modelBuilder.Entity<Ingredient>().HasNoKey();
         }
 
+        public DbSet<User> Users => Set<User>();
         public DbSet<Recipe> Recipes => Set<Recipe>();
         public DbSet<Ingredient> Ingredients => Set<Ingredient>();
     }

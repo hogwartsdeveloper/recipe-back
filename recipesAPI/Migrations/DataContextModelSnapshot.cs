@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using recipesAPI.Data;
 
 #nullable disable
 
@@ -20,7 +21,7 @@ namespace recipesAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("RecipesAPI.Ingredient", b =>
+            modelBuilder.Entity("recipesAPI.Models.Ingredient", b =>
                 {
                     b.Property<int>("Amount")
                         .HasColumnType("integer");
@@ -35,7 +36,7 @@ namespace recipesAPI.Migrations
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("RecipesAPI.Recipe", b =>
+            modelBuilder.Entity("recipesAPI.Models.Recipe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,6 +59,27 @@ namespace recipesAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("recipesAPI.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
