@@ -26,14 +26,15 @@ namespace recipesAPI.Controllers
             }
 
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            await this._context.Users.AddAsync(new User
+            var user = new User
             {
                 Email = request.Email,
                 PasswordHash = passwordHash
-            });
+            };
+            await this._context.Users.AddAsync(user);
             await this._context.SaveChangesAsync();
 
-            return Ok(await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email));
+            return Ok(await this._context.Users.FirstOrDefaultAsync(u => u.Email == user.Email));
         }
 
         [HttpPost("login")]
