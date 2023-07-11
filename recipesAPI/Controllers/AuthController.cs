@@ -8,7 +8,7 @@ namespace recipesAPI.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
-    {
+    { // Identity Server / Duende
         private readonly IUserService _userService;
         private readonly DataContext _context;
 
