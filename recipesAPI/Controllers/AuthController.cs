@@ -17,34 +17,45 @@ namespace recipesAPI.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDto required)
+        public async Task<ActionResult<User>> Register(UserDto request)
         {
-            var user = await this._userService.Register(required);
-
-            if (user is null)
+            var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            if (fUser is not null)
             {
-                return BadRequest("the user already has this email address");
+                return Conflict("This email is already registered.");
             }
 
-            return Ok(user);
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            await this._context.Users.AddAsync(new User
+            {
+                Email = request.Email,
+                PasswordHash = passwordHash
+            });
+            await this._context.SaveChangesAsync();
+
+            return Ok(await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email));
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserDto required)
+        public async Task<ActionResult<string>> Login(UserDto request)
         {
-            var result = await this._userService.Login(required);
+            var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            if (result is null)
+            if (fUser is null)
             {
-                return BadRequest("User not found or wrong password");
+                return BadRequest("User with this email was not found.");
             }
 
-            var refreshToken = this._userService.GenerateRefreshToken();
-            Response.Cookies.Append(
-                "refreshToken", 
-                refreshToken.Token, new CookieOptions{HttpOnly = true, Expires = refreshToken.Expired});
+            if (!BCrypt.Net.BCrypt.Verify(request.Password, fUser.PasswordHash))
+            {
+                return Unauthorized("Wrong password");
+            }
+            
+            this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
+            await this._context.SaveChangesAsync();
+            
+            return Ok(this._userService.CreateToken(fUser));
 
-            return Ok(result);
         }
 
         [HttpPost("refresh-token")]
@@ -64,6 +75,24 @@ namespace recipesAPI.Controllers
             {
                 return Unauthorized("Token expired");
             }
+            
+            this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
+            await this._context.SaveChangesAsync();
+
+            return Ok(this._userService.CreateToken(fUser));
+        }
+
+        private void SetRefreshToken(RefreshToken refreshToken, User user)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = refreshToken.Expired
+            };
+            Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
+            user.RefreshToken = refreshToken.Token;
+            user.TokenCreated = refreshToken.Created;
+            user.TokenExpired = refreshToken.Expired;
         }
 
     }
