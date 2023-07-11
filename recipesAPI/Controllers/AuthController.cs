@@ -17,7 +17,7 @@ namespace recipesAPI.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDto request)
+        public async Task<ActionResult<UserResponseDto>> Register(UserDto request)
         {
             var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
             if (fUser is not null)
