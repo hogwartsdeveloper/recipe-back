@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using recipesAPI.Services;
 
@@ -34,7 +36,7 @@ namespace recipesAPI.Controllers
             await this._context.Users.AddAsync(user);
             await this._context.SaveChangesAsync();
 
-            return Ok(await this._context.Users.FirstOrDefaultAsync(u => u.Email == user.Email));
+            return Ok(user.Email);
         }
 
         [HttpPost("login")]
@@ -59,10 +61,10 @@ namespace recipesAPI.Controllers
 
         }
 
-        [HttpPost("refresh-token")]
-        public async Task<ActionResult<string>> UpdateToken(UserResponseDto required)
+        [HttpPost("refresh-token"), Authorize]
+        public async Task<ActionResult<string>> UpdateToken()
         {
-            var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == required.Email);
+            var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == User.FindFirstValue(ClaimTypes.Email));
             if (fUser is null)
             {
                 return BadRequest("User not found.");
