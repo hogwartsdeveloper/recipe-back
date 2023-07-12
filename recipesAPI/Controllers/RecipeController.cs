@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using recipesAPI.Services.RecipeService;
@@ -5,7 +6,7 @@ using recipesAPI.Services.RecipeService;
 namespace recipesAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]"), Authorize]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeService _recipeService;

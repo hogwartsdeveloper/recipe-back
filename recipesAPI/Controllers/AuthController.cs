@@ -36,11 +36,11 @@ namespace recipesAPI.Controllers
             await this._context.Users.AddAsync(user);
             await this._context.SaveChangesAsync();
 
-            return Ok(user.Email);
+            return Ok(new { Email = user.Email});
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserDto request)
+        public async Task<ActionResult<AuthLoginResponseDto>> Login(UserDto request)
         {
             var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
@@ -53,11 +53,12 @@ namespace recipesAPI.Controllers
             {
                 return Unauthorized("Wrong password");
             }
-            
+
+            var token = this._userService.CreateToken(fUser);
             this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
             await this._context.SaveChangesAsync();
             
-            return Ok(this._userService.CreateToken(fUser));
+            return Ok(new AuthLoginResponseDto{Token = token});
 
         }
 
