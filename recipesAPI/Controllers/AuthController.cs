@@ -19,7 +19,7 @@ namespace recipesAPI.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult<UserResponseDto>> Register(UserDto request)
+        public async Task<ActionResult<AuthLoginResponseDto>> Register(UserDto request)
         {
             var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
             if (fUser is not null)
@@ -34,9 +34,12 @@ namespace recipesAPI.Controllers
                 PasswordHash = passwordHash
             };
             await this._context.Users.AddAsync(user);
-            await this._context.SaveChangesAsync();
 
-            return Ok(new { Email = user.Email});
+            var token = this._userService.CreateToken(fUser);
+            this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
+            await this._context.SaveChangesAsync();
+            
+            return Ok(new AuthLoginResponseDto{Token = token});
         }
 
         [HttpPost("login")]
