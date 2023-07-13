@@ -33,10 +33,10 @@ namespace recipesAPI.Controllers
                 Email = request.Email,
                 PasswordHash = passwordHash
             };
-            await this._context.Users.AddAsync(user);
 
-            var token = this._userService.CreateToken(fUser);
-            this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
+            var token = this._userService.CreateToken(user);
+            this.SetRefreshToken(this._userService.GenerateRefreshToken(), user);
+            await this._context.Users.AddAsync(user);
             await this._context.SaveChangesAsync();
             
             return Ok(new AuthLoginResponseDto{Token = token});
