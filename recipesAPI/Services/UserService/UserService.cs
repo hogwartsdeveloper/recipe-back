@@ -17,9 +17,11 @@ namespace recipesAPI.Services
         
         public string CreateToken(User user)
         {
+            var expired = DateTime.Now.AddHours(1);
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Expired, $"{expired.ToLongDateString()} {expired.ToLongTimeString()}")
             };
 
             var key = new SymmetricSecurityKey(
@@ -29,7 +31,7 @@ namespace recipesAPI.Services
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddHours(1),
+                expires: expired,
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
