@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
-
-namespace RecipesAPI.Services
+namespace RecipesAPI.Services.AuthService
 {
-    public interface IUserService
+    public interface IAuthService
     {
         RefreshToken GenerateRefreshToken();
         string CreateToken(User user);

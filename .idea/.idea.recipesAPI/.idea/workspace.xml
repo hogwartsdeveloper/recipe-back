@@ -6,12 +6,13 @@
     <projectFile profileName="https">recipesAPI/recipesAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipesAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI.sln" afterDir="false" />
+    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="change project name">
+      <change afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RecipesAPI/obj/recipesAPI.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Services/UserService/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Services/AuthService/IAuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Services/UserService/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Services/AuthService/AuthService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aacc74311ca994f12b71cddb22241be9d6654c65e94f5985c5488dee396916f/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7859725346c998ce1e2b30d06936e4598b99cdffed584b358f81ba9891693/StatusCodes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RecipesAPI/Migrations/20230709102745_User.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RecipesAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RecipesAPI/Services/AuthService/AuthService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -118,6 +122,7 @@
       <workItem from="1689490301328" duration="1788000" />
       <workItem from="1689494243324" duration="17000" />
       <workItem from="1689494275174" duration="38000" />
+      <workItem from="1689494319498" duration="349000" />
     </task>
     <task id="LOCAL-00001" summary="Recipe controller">
       <created>1688795179886</created>
@@ -231,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689492439086</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="change project name">
+      <created>1689494452839</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1689494452839</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +272,7 @@
     <MESSAGE value="end auth" />
     <MESSAGE value="end" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="change project name" />
+    <option name="LAST_COMMIT_MESSAGE" value="change project name" />
   </component>
 </project>

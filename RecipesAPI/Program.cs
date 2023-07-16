@@ -3,7 +3,7 @@ global using RecipesAPI.Models;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using RecipesAPI.Services;
+using RecipesAPI.Services.AuthService;
 using RecipesAPI.Services.RecipeService;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -50,7 +50,7 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
     };
 });
 
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IRecipeService, RecipeService>();
 builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();

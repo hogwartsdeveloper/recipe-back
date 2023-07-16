@@ -4,13 +4,13 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace RecipesAPI.Services
+namespace RecipesAPI.Services.AuthService
 {
-    public class UserService : IUserService
+    public class AuthService : IAuthService
     {
         private readonly IConfiguration _configuration;
 
-        public UserService(IConfiguration configuration)
+        public AuthService(IConfiguration configuration)
         {
             this._configuration = configuration;
         }

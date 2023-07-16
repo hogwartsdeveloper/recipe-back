@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RecipesAPI.Services;
+using RecipesAPI.Services.AuthService;
 
 namespace RecipesAPI.Controllers
 {
@@ -9,12 +9,12 @@ namespace RecipesAPI.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     { // Identity Server / Duende
-        private readonly IUserService _userService;
+        private readonly IAuthService _authService;
         private readonly DataContext _context;
 
-        public AuthController(IUserService userService, DataContext context)
+        public AuthController(IAuthService authService, DataContext context)
         {
-            this._userService = userService;
+            this._authService = authService;
             this._context = context;
         }
         
@@ -34,8 +34,8 @@ namespace RecipesAPI.Controllers
                 PasswordHash = passwordHash
             };
 
-            var token = this._userService.CreateToken(user);
-            this.SetRefreshToken(this._userService.GenerateRefreshToken(), user);
+            var token = this._authService.CreateToken(user);
+            this.SetRefreshToken(this._authService.GenerateRefreshToken(), user);
             await this._context.Users.AddAsync(user);
             await this._context.SaveChangesAsync();
             
@@ -57,8 +57,8 @@ namespace RecipesAPI.Controllers
                 return Unauthorized("Wrong password");
             }
 
-            var token = this._userService.CreateToken(fUser);
-            this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
+            var token = this._authService.CreateToken(fUser);
+            this.SetRefreshToken(this._authService.GenerateRefreshToken(), fUser);
             await this._context.SaveChangesAsync();
             
             return Ok(new AuthLoginResponseDto{Token = token});
@@ -83,7 +83,7 @@ namespace RecipesAPI.Controllers
                 return Unauthorized("Token expired");
             }
             
-            var token = this._userService.CreateToken(fUser);
+            var token = this._authService.CreateToken(fUser);
             
             return Ok(new AuthLoginResponseDto{Token = token});
         }
