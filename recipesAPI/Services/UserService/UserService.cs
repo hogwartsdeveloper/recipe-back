@@ -17,7 +17,7 @@ namespace recipesAPI.Services
         
         public string CreateToken(User user)
         {
-            var expired = DateTime.Now.AddHours(1);
+            var expired = DateTime.Now.AddMinutes(15);
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),

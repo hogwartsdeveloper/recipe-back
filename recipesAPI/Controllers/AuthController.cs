@@ -65,7 +65,7 @@ namespace recipesAPI.Controllers
 
         }
 
-        [HttpPost("refresh-token"), Authorize]
+        [HttpGet("refresh-token"), Authorize]
         public async Task<ActionResult<string>> UpdateToken()
         {
             var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == User.FindFirstValue(ClaimTypes.Email));
@@ -83,10 +83,9 @@ namespace recipesAPI.Controllers
                 return Unauthorized("Token expired");
             }
             
-            this.SetRefreshToken(this._userService.GenerateRefreshToken(), fUser);
-            await this._context.SaveChangesAsync();
-
-            return Ok(this._userService.CreateToken(fUser));
+            var token = this._userService.CreateToken(fUser);
+            
+            return Ok(new AuthLoginResponseDto{Token = token});
         }
 
         private void SetRefreshToken(RefreshToken refreshToken, User user)
@@ -94,7 +93,8 @@ namespace recipesAPI.Controllers
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,
-                Expires = refreshToken.Expired
+                Expires = refreshToken.Expired,
+                Path = "/"
             };
             Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
             user.RefreshToken = refreshToken.Token;
