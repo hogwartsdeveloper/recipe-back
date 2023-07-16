@@ -31,8 +31,8 @@ namespace RecipesAPI.Services.UserService
             };
             var token = _authService.CreateToken(user);
             await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
             SetRefreshToken(context, _authService.GenerateRefreshToken(), user);
+            await _context.SaveChangesAsync();
             return new AuthLoginResponseDto { Token = token };
         }
 
@@ -50,7 +50,8 @@ namespace RecipesAPI.Services.UserService
                 throw new CustomException((int)HttpStatusCode.Unauthorized, "Wrong password");
             }
             
-            this.SetRefreshToken(context, _authService.GenerateRefreshToken(), fUser);
+            SetRefreshToken(context, _authService.GenerateRefreshToken(), fUser);
+            await _context.SaveChangesAsync();
 
             return new AuthLoginResponseDto { Token = _authService.CreateToken(fUser) };
         }
@@ -78,7 +79,7 @@ namespace RecipesAPI.Services.UserService
             return new AuthLoginResponseDto { Token = token };
         }
 
-        private async void SetRefreshToken(HttpContext context, RefreshToken refreshToken, User user)
+        private void SetRefreshToken(HttpContext context, RefreshToken refreshToken, User user)
         {
             var cookieOptions = new CookieOptions
             {
@@ -91,8 +92,6 @@ namespace RecipesAPI.Services.UserService
             user.RefreshToken = refreshToken.Token;
             user.TokenCreated = refreshToken.Created;
             user.TokenExpired = refreshToken.Expired;
-
-            await _context.SaveChangesAsync();
         }
     }
 }
