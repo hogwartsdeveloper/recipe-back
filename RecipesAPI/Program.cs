@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using RecipesAPI.Middleware;
 using RecipesAPI.Services.AuthService;
 using RecipesAPI.Services.RecipeService;
+using RecipesAPI.Services.UserService;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,6 +54,7 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
 });
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRecipeService, RecipeService>();
 builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();

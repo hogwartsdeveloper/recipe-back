@@ -6,12 +6,12 @@
     <projectFile profileName="https">recipesAPI/recipesAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="exception middleware">
-      <change afterPath="$PROJECT_DIR$/RecipesAPI/CustomException.cs" afterDir="false" />
+    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="CustomException.cs">
+      <change afterPath="$PROJECT_DIR$/RecipesAPI/Services/UserService/IUserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RecipesAPI/Services/UserService/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/CustomResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/CustomResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/ExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/ExceptionMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -128,7 +128,7 @@
       <workItem from="1689490301328" duration="1788000" />
       <workItem from="1689494243324" duration="17000" />
       <workItem from="1689494275174" duration="38000" />
-      <workItem from="1689494319498" duration="5493000" />
+      <workItem from="1689494319498" duration="9044000" />
     </task>
     <task id="LOCAL-00001" summary="Recipe controller">
       <created>1688795179886</created>
@@ -263,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689498747995</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="CustomException.cs">
+      <created>1689500532541</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1689500532541</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +302,7 @@
     <MESSAGE value="change project name" />
     <MESSAGE value="change name auth service" />
     <MESSAGE value="exception middleware" />
-    <option name="LAST_COMMIT_MESSAGE" value="exception middleware" />
+    <MESSAGE value="CustomException.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="CustomException.cs" />
   </component>
 </project>
