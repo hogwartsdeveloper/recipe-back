@@ -1,3 +1,4 @@
+using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace RecipesAPI.Controllers
             var fUser = await this._context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
             if (fUser is not null)
             {
-                return Conflict("This email is already registered.");
+                throw new CustomException((int)HttpStatusCode.Conflict, "This email is already registered.");
             }
 
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);

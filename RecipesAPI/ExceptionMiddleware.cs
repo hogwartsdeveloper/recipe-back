@@ -1,4 +1,3 @@
-using System.Net;
 using System.Net.Mime;
 using System.Text.Json;
 
@@ -21,17 +20,17 @@ namespace RecipesAPI.Middleware
             {
                 await next(context);
             }
-            catch (Exception ex)
+            catch (CustomException ex)
             {
                 _logger.LogError(ex, ex.Message);
                 await HandleExceptionAsync(context, ex);
             }
         }
         
-        private async Task HandleExceptionAsync(HttpContext context, Exception ex)
+        private async Task HandleExceptionAsync(HttpContext context, CustomException ex)
         {
             context.Response.ContentType = MediaTypeNames.Application.Json;
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = ex.StatusCode;
 
             var response = _env.IsDevelopment() 
                 ? new CustomResponse(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
