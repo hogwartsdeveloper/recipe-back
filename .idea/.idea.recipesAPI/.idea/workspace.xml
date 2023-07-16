@@ -6,13 +6,18 @@
     <projectFile profileName="https">recipesAPI/recipesAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="change project name">
-      <change afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RecipesAPI/obj/recipesAPI.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" afterDir="false" />
+    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="change name auth service">
+      <change afterPath="$PROJECT_DIR$/RecipesAPI/CustomResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RecipesAPI/ExceptionMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/Services/UserService/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Services/AuthService/IAuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/Services/UserService/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Services/AuthService/AuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/ref/recipesAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/ref/recipesAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/refint/recipesAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/refint/recipesAPI.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +127,7 @@
       <workItem from="1689490301328" duration="1788000" />
       <workItem from="1689494243324" duration="17000" />
       <workItem from="1689494275174" duration="38000" />
-      <workItem from="1689494319498" duration="349000" />
+      <workItem from="1689494319498" duration="3674000" />
     </task>
     <task id="LOCAL-00001" summary="Recipe controller">
       <created>1688795179886</created>
@@ -243,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689494452839</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="change name auth service">
+      <created>1689494716330</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1689494716330</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +285,7 @@
     <MESSAGE value="end" />
     <MESSAGE value="fix" />
     <MESSAGE value="change project name" />
-    <option name="LAST_COMMIT_MESSAGE" value="change project name" />
+    <MESSAGE value="change name auth service" />
+    <option name="LAST_COMMIT_MESSAGE" value="change name auth service" />
   </component>
 </project>

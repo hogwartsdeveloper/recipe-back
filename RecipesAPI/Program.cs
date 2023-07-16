@@ -3,6 +3,7 @@ global using RecipesAPI.Models;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using RecipesAPI.Middleware;
 using RecipesAPI.Services.AuthService;
 using RecipesAPI.Services.RecipeService;
 using Swashbuckle.AspNetCore.Filters;
@@ -35,6 +36,7 @@ builder.Services.AddSwaggerGen(options =>
     
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddAuthentication().AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -67,6 +69,7 @@ app.UseHttpsRedirection();
 app.UseCors("MyCors");
 
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
