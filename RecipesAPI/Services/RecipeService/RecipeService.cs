@@ -34,7 +34,8 @@ namespace RecipesAPI.Services.RecipeService
 
         public async Task<List<Recipe>> GetAll()
         {
-            return await this._context.Recipes.ToListAsync();
+            return await this._context
+                .Recipes.Include(r => r.Ingredients).ToListAsync();
         }
     }
 }

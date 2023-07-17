@@ -6,12 +6,11 @@
     <projectFile profileName="https">recipesAPI/recipesAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="CustomException.cs">
-      <change afterPath="$PROJECT_DIR$/RecipesAPI/Services/UserService/IUserService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RecipesAPI/Services/UserService/UserService.cs" afterDir="false" />
+    <list default="true" id="ebb81bd9-f151-4756-9844-d1454981e815" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.recipesAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/DataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/DataContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Migrations/DataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Migrations/DataContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecipesAPI/Services/RecipeService/RecipeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/Services/RecipeService/RecipeService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/bin/Debug/net7.0/RecipesAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/RecipesAPI/obj/Debug/net7.0/recipesAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -33,6 +32,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aacc74311ca994f12b71cddb22241be9d6654c65e94f5985c5488dee396916f/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7859725346c998ce1e2b30d06936e4598b99cdffed584b358f81ba9891693/StatusCodes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/zhannur/RiderProjects/recipesAPI/RecipesAPI/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/zhannur/RiderProjects/recipesAPI/RecipesAPI/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecipesAPI/Migrations/20230709102745_User.Designer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecipesAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RecipesAPI/Services/AuthService/AuthService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -128,7 +129,7 @@
       <workItem from="1689490301328" duration="1788000" />
       <workItem from="1689494243324" duration="17000" />
       <workItem from="1689494275174" duration="38000" />
-      <workItem from="1689494319498" duration="9044000" />
+      <workItem from="1689494319498" duration="13494000" />
     </task>
     <task id="LOCAL-00001" summary="Recipe controller">
       <created>1688795179886</created>
@@ -270,7 +271,28 @@
       <option name="project" value="LOCAL" />
       <updated>1689500532541</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="create user service">
+      <created>1689522407027</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1689522407027</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fix import">
+      <created>1689522464306</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1689522464306</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix">
+      <created>1689522902443</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1689522902443</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,11 +320,13 @@
     <MESSAGE value="update token" />
     <MESSAGE value="end auth" />
     <MESSAGE value="end" />
-    <MESSAGE value="fix" />
     <MESSAGE value="change project name" />
     <MESSAGE value="change name auth service" />
     <MESSAGE value="exception middleware" />
     <MESSAGE value="CustomException.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="CustomException.cs" />
+    <MESSAGE value="create user service" />
+    <MESSAGE value="fix import" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>

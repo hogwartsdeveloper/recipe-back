@@ -17,9 +17,7 @@ namespace RecipesAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Recipe>()
-                .Ignore(r => r.Ingredients);
-            modelBuilder.Entity<Ingredient>().HasNoKey();
+            modelBuilder.Entity<Recipe>().HasMany<Ingredient>(r => r.Ingredients);
         }
 
         public DbSet<User> Users => Set<User>();
